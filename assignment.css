@@ -1,0 +1,114 @@
+body{
+	background-color: black;
+	margin: 0;
+	padding: 0;
+}
+.romantic_container{
+	height: 192px;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    padding: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+}
+.backImg{
+	    position: relative;
+    /* top: 10px; */
+    display: inline-block;
+    top: -5px;
+    margin-right: 10px;
+}
+.searchImg{
+	position: relative;
+    top: 27px;
+    float: right;
+}
+.img_back{
+	/*margin-left:30px;
+	margin-top:100px;*/
+	float: left;
+	display: inline;
+	height: 25px;
+}
+.romantic_text{
+	color: white; 
+	font-size:36pt;
+	/*padding-top:100px;
+	margin-left:30px;*/
+	display: inline-block;
+	font-family: 'Titillium Web', sans-serif;
+}
+.img_search{
+	/*margin-top:100px;
+	margin-right:30px;*/
+	display: inline-block;
+	float: right;
+	height: 25px;
+}
+.gradient{
+	width:100%;
+	height: 36px;
+	position:fixed;
+	top:192px;
+	background: black; /* For browsers that do not support gradients */
+	opacity: 0.1;
+	background: -webkit-linear-gradient(black, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, white);
+    
+}
+.item{
+	float:left;
+	margin-left: 30px;
+	margin-bottom:0px;
+	margin-right:30px;
+	width:28vw;
+	text-align: left;
+	display: inline-block;
+	text-align: justify;
+}
+.movie_title{
+	font-size: 36pt;
+	font-size: 3.5vw; 
+	white-space: nowrap;
+	overflow: hidden;
+
+		text-overflow: ellipsis;
+	font-style:light; 
+	color: #FFFFFF; 
+	text-align: left; 
+	font-family: 'Titillium Web', sans-serif;
+	
+	margin-left: 30px;
+	margin-top:0px;
+	margin-bottom: 90px;
+}
+.header{
+	width:100%;
+	text-align: justify;
+	margin:auto;
+}
+.header:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+.poster-image{
+	margin-left:30px; 
+	margin-right:30px;
+	width:100%;
+}
+
+@media only screen and (max-width: 540px) {
+	.romantic_text{ 
+		font-size:30pt;
+	}
+}
+@media only screen and (max-width: 450px) {
+	.romantic_text{ 
+		font-size:24pt;
+	}
+}

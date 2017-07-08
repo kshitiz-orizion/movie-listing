@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='width=device-width,height=device-height, initial-scale=1' name='viewport'/>
+<title>Romantic Comedy</title>
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assignment.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="me-lazyload.js"></script>
+<body ng-app="myApp" ng-controller="pagecontroller">
+	<div class="romantic_container">
+		<div class="header">
+			<a href="#" class="backImg"><img class="img_back" src="./Slices/Back.png" style="width: auto;"></a>
+			<div class="romantic_text">{{firstdata.data.page.title}}</div>
+			<a href="#" class="searchImg"><img class="img_search" src="./Slices/search.png" style="width:auto;"></a>
+		</div>
+	</div>
+	<div class="gradient" on-scroll-add-class="lower_opacity">
+	</div>
+	<div style="padding-top: 230px; height: 0px;"></div>
+	<div >
+		<!-- <div style="color:white;" ng-repeat="eachCont in firstdata.content-items.content">{{eachCont.name}}</div> -->
+		<div>
+		<div ng-repeat="eachItem in firstdata.data.page['content-items']['content'] track by $index" class="item">
+			<img  lazy-src="Slices/{{eachItem['poster-image']}}" alt="" class="poster-image" onerror="this.src='Slices/placeholder_for_missing_posters.png'">
+			<div style="height: 24px"></div>
+			<p class="movie_title">{{eachItem.name}}</p>
+		</div>
+		</div>
+		<br>
+		<div ng-repeat="eachItem in seconddata.data.page['content-items']['content'] track by $index" class="item">
+			<img lazy-src="Slices/{{eachItem['poster-image']}}" alt="" class="poster-image" onerror="this.src='Slices/placeholder_for_missing_posters.png'">
+			<div style="height: 24px"></div>
+			<p class="movie_title">{{eachItem.name}}</p>
+		</div>
+		<br>
+		<div ng-repeat="eachItem in thirddata.data.page['content-items']['content'] track by $index" class="item">
+			<img lazy-src="Slices/{{eachItem['poster-image']}}" alt="" class="poster-image" onerror="this.src='Slices/placeholder_for_missing_posters.png'">
+			<div style="height: 24px"></div>
+			<p class="movie_title">{{eachItem.name}}</p>
+		</div>
+	</div> 
+	
+
+<script> 
+var app = angular.module("myApp", ['me-lazyload']);
+app.controller('pagecontroller',['$scope','$http',function($scope,$http){
+
+	$http.get('API/CONTENTLISTINGPAGE-PAGE1.json').then(function(data){
+		$scope.firstdata=data;
+	});
+	$http.get('API/CONTENTLISTINGPAGE-PAGE2.json').then(function(data){
+		$scope.seconddata=data;
+	});
+	$http.get('API/CONTENTLISTINGPAGE-PAGE3.json').then(function(data){
+		$scope.thirddata=data;
+	});
+		
+	
+}]);
+app.directive('onScrollAddClass',function($window){
+	return{
+		link: function(scope,elm,attr){
+			init(elm,attr.onScrollAddClass);
+			function init(elm,cls){
+				elm.viewportChecker({
+					classToAdd: cls,
+					repeat:true
+				});
+			}
+		}
+	}
+});
+</script>
+</body>
+</html>
